@@ -4,7 +4,7 @@ Nhánh **Thời tiết** chứa các hiện tượng khí quyển thường gặ
 
 ## Điều hướng
 
-- Breadcrumb: [Child Knowledge Tree](../../../README.md) > [Cây kiến thức](../../README.md) > [Tự nhiên](../README.md) > **Thời tiết**
+- Root dự án: [Child Knowledge Tree](../../README.md)
 - Cha: [Tự nhiên](../README.md)
 - Cùng cấp: chưa có
 - Con:

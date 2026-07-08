@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "project": {
     "name": "child-knowledge-tree",
     "title": "Child Knowledge Tree",
@@ -17,57 +17,58 @@
   "paths": {
     "root_readme": "README.md",
     "metadata": "metadata.json",
-    "tree_root": "knowledge-tree",
-    "tree_root_readme": "knowledge-tree/README.md"
+    "tree_root": ".",
+    "tree_structure": "{linh-vuc}/{linh-vuc-con}/.../{khai-niem}/README.md"
   },
   "rules": {
-    "tree_structure": "knowledge-tree/{linh-vuc}/{linh-vuc-con}/.../{khai-niem}/README.md",
+    "tree_structure": "{linh-vuc}/{linh-vuc-con}/.../{khai-niem}/README.md",
     "slug_format": "lower-kebab-case",
     "concept_readme_filename": "README.md",
+    "concept_readme_policy": "README khái niệm chỉ nhúng ảnh truyện tranh .webp; không viết lại nội dung kiến thức dài bằng Markdown.",
+    "image_generation_models": [
+      "DALL-E 3",
+      "DALL-E"
+    ],
     "image_format": "webp",
     "image_location": "Ảnh .webp phải nằm cùng thư mục với README.md của khái niệm.",
-    "path_source_of_truth": "Tất cả dữ liệu đường dẫn, quan hệ cha-con-cùng cấp và ảnh minh hoạ được lưu trong metadata.json ở root.",
-    "navigation_required": true,
+    "path_source_of_truth": "Tất cả dữ liệu đường dẫn, quan hệ cha-con-cùng cấp, ảnh minh hoạ và nguồn tham khảo được lưu trong metadata.json ở root.",
+    "navigation_required": false,
     "citations_required": true
   },
   "content_template": {
-    "required_sections": [
-      "Điều hướng",
-      "Mở màn truyện tranh",
-      "5 ý cốt lõi nhất",
-      "8 ý phổ biến còn lại",
-      "Áp dụng vào đời sống",
-      "Giải quyết vấn đề thực tế nào",
-      "So sánh với kiến thức tương tự",
-      "Nguồn tham khảo"
+    "concept_readme_required_content": [
+      "cover.webp",
+      "comic-01.webp",
+      "comic-02.webp",
+      "summary-map.webp"
     ],
-    "core_ideas_limit": 5,
-    "popular_ideas_limit": 8,
-    "must_include": [
+    "comic_image_must_include": [
       "giải thích dễ hiểu bằng tiếng Việt",
       "thuật ngữ tiếng Anh nếu có",
       "ví dụ đời thường",
       "hướng dẫn áp dụng thực tế",
       "vấn đề thực tế được giải quyết nếu có",
       "so sánh với kiến thức tương tự",
-      "link citation nguồn tham khảo"
-    ]
+      "nguồn tham khảo hoặc mã nguồn tham khảo ngắn gọn nếu cần"
+    ],
+    "sources_location": "Lưu link nguồn tham khảo trong metadata.json; ảnh có thể hiển thị nguồn ngắn gọn ở cuối ảnh hoặc trong summary-map.webp."
   },
   "nav_policy": {
     "show_parent": true,
     "show_children": true,
     "show_siblings": true,
     "show_breadcrumb": true,
-    "link_to_metadata": true
+    "link_to_metadata": true,
+    "concept_readme_nav_required": false
   },
   "nodes": [
     {
-      "id": "knowledge-tree",
-      "title": "Cây kiến thức",
-      "slug": "knowledge-tree",
+      "id": "root",
+      "title": "Child Knowledge Tree",
+      "slug": "root",
       "type": "root",
-      "path": "knowledge-tree",
-      "readme": "knowledge-tree/README.md",
+      "path": ".",
+      "readme": "README.md",
       "parent_id": null,
       "children": [
         "nature"
@@ -81,9 +82,9 @@
       "title": "Tự nhiên",
       "slug": "nature",
       "type": "domain",
-      "path": "knowledge-tree/nature",
-      "readme": "knowledge-tree/nature/README.md",
-      "parent_id": "knowledge-tree",
+      "path": "nature",
+      "readme": "nature/README.md",
+      "parent_id": "root",
       "children": [
         "nature-weather"
       ],
@@ -96,8 +97,8 @@
       "title": "Thời tiết",
       "slug": "weather",
       "type": "category",
-      "path": "knowledge-tree/nature/weather",
-      "readme": "knowledge-tree/nature/weather/README.md",
+      "path": "nature/weather",
+      "readme": "nature/weather/README.md",
       "parent_id": "nature",
       "children": [
         "nature-weather-tornado-types"
@@ -111,15 +112,19 @@
       "title": "Các loại lốc xoáy",
       "slug": "tornado-types",
       "type": "concept",
-      "path": "knowledge-tree/nature/weather/tornado-types",
-      "readme": "knowledge-tree/nature/weather/tornado-types/README.md",
+      "path": "nature/weather/tornado-types",
+      "readme": "nature/weather/tornado-types/README.md",
       "parent_id": "nature-weather",
       "children": [],
       "images": [
-        "knowledge-tree/nature/weather/tornado-types/cover.webp",
-        "knowledge-tree/nature/weather/tornado-types/comic-01.webp",
-        "knowledge-tree/nature/weather/tornado-types/comic-02.webp",
-        "knowledge-tree/nature/weather/tornado-types/summary-map.webp"
+        "nature/weather/tornado-types/cover.webp",
+        "nature/weather/tornado-types/comic-01.webp",
+        "nature/weather/tornado-types/comic-02.webp",
+        "nature/weather/tornado-types/summary-map.webp"
+      ],
+      "image_generation_models": [
+        "DALL-E 3",
+        "DALL-E"
       ],
       "status": "ready",
       "description": "Phân biệt tornado, waterspout/vòi rồng nước, dust devil, gustnado, fire whirl/lốc xoáy lửa và cách áp dụng để xử lý tình huống thực tế.",

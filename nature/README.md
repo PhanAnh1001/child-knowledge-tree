@@ -4,9 +4,8 @@ Nhánh **Tự nhiên** gom các kiến thức về hiện tượng tự nhiên, 
 
 ## Điều hướng
 
-- Breadcrumb: [Child Knowledge Tree](../../README.md) > [Cây kiến thức](../README.md) > **Tự nhiên**
-- Cha: [Cây kiến thức](../README.md)
-- Cùng cấp: chưa có
+- Root dự án: [Child Knowledge Tree](../README.md)
+- Cha: không có, đây là lĩnh vực cấp cao.
 - Con:
   - [Thời tiết](./weather/README.md)
 
