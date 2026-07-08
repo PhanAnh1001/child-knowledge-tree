@@ -2,21 +2,19 @@
 
 Đây là node gốc của hệ thống **mind map tree** trong dự án **Child Knowledge Tree**.
 
-Mỗi nhánh bên dưới sẽ là một lĩnh vực kiến thức, ví dụ:
-
-```text
-knowledge-tree/nature/
-knowledge-tree/ai/
-knowledge-tree/programming/
-knowledge-tree/life-skills/
-```
-
 ## Điều hướng
 
 - Root dự án: [Child Knowledge Tree](../README.md)
 - Metadata: [metadata.json](../metadata.json)
 - Cha: không có, đây là node gốc của cây.
-- Con: chưa có khái niệm con nào.
+- Con:
+  - [Tự nhiên](./nature/README.md)
+
+## Nhánh hiện có
+
+| Node | Mô tả |
+|---|---|
+| [Tự nhiên](./nature/README.md) | Các hiện tượng tự nhiên, môi trường, thời tiết, địa lý, sinh học đời thường. |
 
 ## Cách thêm một khái niệm mới
 
@@ -33,19 +31,10 @@ README.md
 cover.webp
 comic-01.webp
 comic-02.webp
+summary-map.webp
 ```
 
-Sau đó cập nhật [`../metadata.json`](../metadata.json) để lưu:
-
-- `id`
-- `title`
-- `slug`
-- `path`
-- `readme`
-- `parent_id`
-- `children`
-- `images`
-- `status`
+Sau đó cập nhật [`../metadata.json`](../metadata.json) để lưu `id`, `title`, `slug`, `path`, `readme`, `parent_id`, `children`, `images`, `status`.
 
 ## Format nội dung khái niệm
 

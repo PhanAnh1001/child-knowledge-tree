@@ -69,10 +69,80 @@
       "path": "knowledge-tree",
       "readme": "knowledge-tree/README.md",
       "parent_id": null,
-      "children": [],
+      "children": [
+        "nature"
+      ],
       "images": [],
       "status": "ready",
-      "description": "Node gốc của mind map tree, chứa các lĩnh vực kiến thức sẽ được thêm dần."
+      "description": "Node gốc của mind map tree, chứa các lĩnh vực kiến thức."
+    },
+    {
+      "id": "nature",
+      "title": "Tự nhiên",
+      "slug": "nature",
+      "type": "domain",
+      "path": "knowledge-tree/nature",
+      "readme": "knowledge-tree/nature/README.md",
+      "parent_id": "knowledge-tree",
+      "children": [
+        "nature-weather"
+      ],
+      "images": [],
+      "status": "ready",
+      "description": "Kiến thức về hiện tượng tự nhiên, môi trường, thời tiết, địa lý, sinh học đời thường."
+    },
+    {
+      "id": "nature-weather",
+      "title": "Thời tiết",
+      "slug": "weather",
+      "type": "category",
+      "path": "knowledge-tree/nature/weather",
+      "readme": "knowledge-tree/nature/weather/README.md",
+      "parent_id": "nature",
+      "children": [
+        "nature-weather-tornado-types"
+      ],
+      "images": [],
+      "status": "ready",
+      "description": "Các hiện tượng khí quyển, cảnh báo thời tiết và cách xử lý trong đời sống."
+    },
+    {
+      "id": "nature-weather-tornado-types",
+      "title": "Các loại lốc xoáy",
+      "slug": "tornado-types",
+      "type": "concept",
+      "path": "knowledge-tree/nature/weather/tornado-types",
+      "readme": "knowledge-tree/nature/weather/tornado-types/README.md",
+      "parent_id": "nature-weather",
+      "children": [],
+      "images": [
+        "knowledge-tree/nature/weather/tornado-types/cover.webp",
+        "knowledge-tree/nature/weather/tornado-types/comic-01.webp",
+        "knowledge-tree/nature/weather/tornado-types/comic-02.webp",
+        "knowledge-tree/nature/weather/tornado-types/summary-map.webp"
+      ],
+      "status": "ready",
+      "description": "Phân biệt tornado, waterspout/vòi rồng nước, dust devil, gustnado, fire whirl/lốc xoáy lửa và cách áp dụng để xử lý tình huống thực tế.",
+      "keywords": [
+        "tornado",
+        "waterspout",
+        "vòi rồng",
+        "dust devil",
+        "gustnado",
+        "fire whirl",
+        "fire tornado",
+        "EF Scale",
+        "lốc xoáy"
+      ],
+      "sources": [
+        "https://www.nssl.noaa.gov/education/svrwx101/tornadoes/",
+        "https://www.nssl.noaa.gov/education/svrwx101/tornadoes/types/",
+        "https://www.weather.gov/mfl/waterspouts",
+        "https://www.weather.gov/fgz/DustDevil",
+        "https://forecast.weather.gov/glossary.php?word=gustnado",
+        "https://www.weather.gov/oun/efscale",
+        "https://arxiv.org/abs/1605.01315"
+      ]
     }
   ]
 }

@@ -12,6 +12,12 @@ Thay vì đọc lý thuyết khô như bánh mì để quên 3 ngày, mỗi khá
 - Mỗi khái niệm có `README.md` riêng, kèm ảnh `.webp` cùng thư mục.
 - Toàn bộ dữ liệu điều hướng, đường dẫn, quan hệ cha - con - cùng cấp được quản lý trong [`metadata.json`](./metadata.json) ở root.
 
+## Khái niệm đã có
+
+| Lĩnh vực | Nhánh | Khái niệm | Trạng thái |
+|---|---|---|---|
+| Tự nhiên | Thời tiết | [Các loại lốc xoáy](./knowledge-tree/nature/weather/tornado-types/README.md) | `ready` |
+
 ## Cấu trúc thư mục
 
 ```text
@@ -25,8 +31,10 @@ knowledge-tree/
       README.md
       {khai-niem}/
         README.md
-        image-01.webp
-        image-02.webp
+        cover.webp
+        comic-01.webp
+        comic-02.webp
+        summary-map.webp
 ```
 
 Ví dụ đường dẫn khái niệm:
@@ -35,10 +43,10 @@ Ví dụ đường dẫn khái niệm:
 knowledge-tree/{lĩnh vực}/{lĩnh vực con 1}/.../{khái niệm con n}/README.md
 ```
 
-Ví dụ thực tế sau này:
+Ví dụ thực tế:
 
 ```text
-knowledge-tree/nature/weather/tornado/README.md
+knowledge-tree/nature/weather/tornado-types/README.md
 knowledge-tree/ai/llm/rag/README.md
 knowledge-tree/programming/backend/api/README.md
 ```
@@ -127,13 +135,10 @@ Metadata dùng để:
 ```md
 ## Điều hướng
 
+- Breadcrumb: [Cây kiến thức](../../../README.md) > [Tự nhiên](../../README.md) > [Thời tiết](../README.md)
 - Cha: [Thời tiết](../README.md)
-- Cùng cấp:
-  - [Mưa](../rain/README.md)
-  - [Bão](../storm/README.md)
-- Con:
-  - [Lốc xoáy lửa](./fire-whirl/README.md)
-  - [Vòi rồng](./waterspout/README.md)
+- Cùng cấp: chưa có
+- Con: chưa có
 ```
 
 ## Trạng thái hiện tại
@@ -141,6 +146,7 @@ Metadata dùng để:
 - Đã có root README.
 - Đã có metadata root.
 - Đã có thư mục khởi đầu `knowledge-tree/`.
+- Đã có nhánh `nature/weather/tornado-types` kèm README và ảnh `.webp`.
 - Các khái niệm chi tiết sẽ được thêm dần theo đúng metadata.
 
 ## Nguyên tắc viết nội dung
