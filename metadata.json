@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "project": {
+    "name": "child-knowledge-tree",
+    "title": "Child Knowledge Tree",
+    "language": "vi",
+    "repository": "PhanAnh1001/child-knowledge-tree",
+    "description": "Dự án sử dụng tiếng Việt, chứa kiến thức cơ bản cốt lõi về các khái niệm dưới dạng truyện tranh hài hước lầy lội.",
+    "content_style": [
+      "truyen-tranh",
+      "hai-huoc",
+      "lay-loi",
+      "de-hieu",
+      "ap-dung-thuc-te"
+    ]
+  },
+  "paths": {
+    "root_readme": "README.md",
+    "metadata": "metadata.json",
+    "tree_root": "knowledge-tree",
+    "tree_root_readme": "knowledge-tree/README.md"
+  },
+  "rules": {
+    "tree_structure": "knowledge-tree/{linh-vuc}/{linh-vuc-con}/.../{khai-niem}/README.md",
+    "slug_format": "lower-kebab-case",
+    "concept_readme_filename": "README.md",
+    "image_format": "webp",
+    "image_location": "Ảnh .webp phải nằm cùng thư mục với README.md của khái niệm.",
+    "path_source_of_truth": "Tất cả dữ liệu đường dẫn, quan hệ cha-con-cùng cấp và ảnh minh hoạ được lưu trong metadata.json ở root.",
+    "navigation_required": true,
+    "citations_required": true
+  },
+  "content_template": {
+    "required_sections": [
+      "Điều hướng",
+      "Mở màn truyện tranh",
+      "5 ý cốt lõi nhất",
+      "8 ý phổ biến còn lại",
+      "Áp dụng vào đời sống",
+      "Giải quyết vấn đề thực tế nào",
+      "So sánh với kiến thức tương tự",
+      "Nguồn tham khảo"
+    ],
+    "core_ideas_limit": 5,
+    "popular_ideas_limit": 8,
+    "must_include": [
+      "giải thích dễ hiểu bằng tiếng Việt",
+      "thuật ngữ tiếng Anh nếu có",
+      "ví dụ đời thường",
+      "hướng dẫn áp dụng thực tế",
+      "vấn đề thực tế được giải quyết nếu có",
+      "so sánh với kiến thức tương tự",
+      "link citation nguồn tham khảo"
+    ]
+  },
+  "nav_policy": {
+    "show_parent": true,
+    "show_children": true,
+    "show_siblings": true,
+    "show_breadcrumb": true,
+    "link_to_metadata": true
+  },
+  "nodes": [
+    {
+      "id": "knowledge-tree",
+      "title": "Cây kiến thức",
+      "slug": "knowledge-tree",
+      "type": "root",
+      "path": "knowledge-tree",
+      "readme": "knowledge-tree/README.md",
+      "parent_id": null,
+      "children": [],
+      "images": [],
+      "status": "ready",
+      "description": "Node gốc của mind map tree, chứa các lĩnh vực kiến thức sẽ được thêm dần."
+    }
+  ]
+}
