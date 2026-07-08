@@ -16,7 +16,7 @@ Mỗi khái niệm được trình bày bằng các ảnh truyện tranh `.webp`
 
 | Lĩnh vực | Nhánh | Khái niệm | Trạng thái |
 |---|---|---|---|
-| Tự nhiên | Thời tiết | Các loại lốc xoáy | `ready` |
+| Tự nhiên | Thời tiết | [Các loại lốc xoáy](./nature/weather/tornado-types/README.md) | `ready` |
 
 ## Cấu trúc thư mục
 
