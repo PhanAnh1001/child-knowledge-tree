@@ -1,49 +1,51 @@
 # Các loại lốc xoáy 🌪️
 
-![Bìa truyện tranh về các loại lốc xoáy](./cover.webp)
+> Ảnh được nhúng qua jsDelivr CDN cache để giảm lỗi GitHub “too many requests”. Bấm vào ảnh để mở bản `.webp` local trong repo nếu cần.
+
+<a href="./cover.webp"><img src="https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/cover.webp" alt="Bìa truyện tranh về các loại lốc xoáy" loading="lazy"></a>
 
 Nguồn: [NOAA NSSL - Tornado Basics](https://www.nssl.noaa.gov/education/svrwx101/tornadoes/), [NOAA NSSL - Tornado Types](https://www.nssl.noaa.gov/education/svrwx101/tornadoes/types/), [NWS - Waterspouts](https://www.weather.gov/mfl/waterspouts), [NWS - Dust Devils](https://www.weather.gov/fgz/DustDevil)
 
-![Comic 01 - Tornado thật là gì?](./comic-01.webp)
+<a href="./comic-01.webp"><img src="https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/comic-01.webp" alt="Comic 01 - Tornado thật là gì?" loading="lazy"></a>
 
 Nguồn: [NOAA NSSL - Tornado Basics](https://www.nssl.noaa.gov/education/svrwx101/tornadoes/), [NOAA NSSL - Tornado Types](https://www.nssl.noaa.gov/education/svrwx101/tornadoes/types/), [NWS - Enhanced Fujita Scale](https://www.weather.gov/oun/efscale)
 
-![Comic 02 - Họ hàng nhà xoáy](./comic-02.webp)
+<a href="./comic-02.webp"><img src="https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/comic-02.webp" alt="Comic 02 - Họ hàng nhà xoáy" loading="lazy"></a>
 
 Nguồn: [NOAA NSSL - Tornado Types](https://www.nssl.noaa.gov/education/svrwx101/tornadoes/types/), [NWS - Waterspouts](https://www.weather.gov/mfl/waterspouts), [NWS - Dust Devils](https://www.weather.gov/fgz/DustDevil), [NWS Glossary - Gustnado](https://forecast.weather.gov/glossary.php?word=gustnado), [Blue Whirls paper](https://arxiv.org/abs/1605.01315)
 
-![Comic 03 - Gặp xoáy thì làm gì?](./comic-03.webp)
+<a href="./comic-03.webp"><img src="https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/comic-03.webp" alt="Comic 03 - Gặp xoáy thì làm gì?" loading="lazy"></a>
 
 Nguồn: [NOAA NSSL - Tornado Basics](https://www.nssl.noaa.gov/education/svrwx101/tornadoes/), [NWS - Waterspouts](https://www.weather.gov/mfl/waterspouts), [NWS - Dust Devils](https://www.weather.gov/fgz/DustDevil), [NWS Glossary - Gustnado](https://forecast.weather.gov/glossary.php?word=gustnado)
 
-![Comic 04 - Supercell tornado: boss dông xoay](./comic-04.webp)
+<a href="./comic-04.webp"><img src="https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/comic-04.webp" alt="Comic 04 - Supercell tornado: boss dông xoay" loading="lazy"></a>
 
 Nguồn: [NOAA NSSL - Tornado Types: Supercell Tornadoes](https://www.nssl.noaa.gov/education/svrwx101/tornadoes/types/), [NOAA NSSL - Tornado Basics](https://www.nssl.noaa.gov/education/svrwx101/tornadoes/)
 
-![Comic 05 - QLCS tornado: dải dông đánh úp](./comic-05.webp)
+<a href="./comic-05.webp"><img src="https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/comic-05.webp" alt="Comic 05 - QLCS tornado: dải dông đánh úp" loading="lazy"></a>
 
 Nguồn: [NOAA NSSL - Tornado Types: QLCS Tornadoes](https://www.nssl.noaa.gov/education/svrwx101/tornadoes/types/)
 
-![Comic 06 - Landspout và waterspout: xoáy mảnh, xoáy đi bơi](./comic-06.webp)
+<a href="./comic-06.webp"><img src="https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/comic-06.webp" alt="Comic 06 - Landspout và waterspout: xoáy mảnh, xoáy đi bơi" loading="lazy"></a>
 
 Nguồn: [NOAA NSSL - Tornado Types: Landspouts and Waterspouts](https://www.nssl.noaa.gov/education/svrwx101/tornadoes/types/), [NWS - About Waterspouts](https://www.weather.gov/mfl/waterspouts)
 
-![Comic 07 - Dust devil vs gustnado: nhìn giống nhưng khác gốc](./comic-07.webp)
+<a href="./comic-07.webp"><img src="https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/comic-07.webp" alt="Comic 07 - Dust devil vs gustnado: nhìn giống nhưng khác gốc" loading="lazy"></a>
 
 Nguồn: [NWS - Dust Devils](https://www.weather.gov/fgz/DustDevil), [NWS Glossary - Gustnado](https://forecast.weather.gov/glossary.php?word=gustnado), [NOAA NSSL - Tornado Types](https://www.nssl.noaa.gov/education/svrwx101/tornadoes/types/)
 
-![Comic 08 - Fire whirl: lửa xoay tăng động](./comic-08.webp)
+<a href="./comic-08.webp"><img src="https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/comic-08.webp" alt="Comic 08 - Fire whirl: lửa xoay tăng động" loading="lazy"></a>
 
 Nguồn: [Blue Whirls paper](https://arxiv.org/abs/1605.01315), [NOAA NSSL - Tornado Basics](https://www.nssl.noaa.gov/education/svrwx101/tornadoes/)
 
-![Comic 09 - EF Scale: chấm điểm theo thiệt hại](./comic-09.webp)
+<a href="./comic-09.webp"><img src="https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/comic-09.webp" alt="Comic 09 - EF Scale: chấm điểm theo thiệt hại" loading="lazy"></a>
 
 Nguồn: [NWS - Enhanced Fujita Scale](https://www.weather.gov/oun/efscale), [NOAA NSSL - Tornado Basics](https://www.nssl.noaa.gov/education/svrwx101/tornadoes/)
 
-![Comic 10 - Nhận diện nhanh ngoài đời: thấy xoáy thì xử lý sao?](./comic-10.webp)
+<a href="./comic-10.webp"><img src="https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/comic-10.webp" alt="Comic 10 - Nhận diện nhanh ngoài đời: thấy xoáy thì xử lý sao?" loading="lazy"></a>
 
 Nguồn: [NOAA NSSL - Tornado Basics](https://www.nssl.noaa.gov/education/svrwx101/tornadoes/), [NWS - Waterspouts](https://www.weather.gov/mfl/waterspouts), [NWS - Dust Devils](https://www.weather.gov/fgz/DustDevil), [NWS Glossary - Gustnado](https://forecast.weather.gov/glossary.php?word=gustnado)
 
-![Sơ đồ tổng kết các loại lốc xoáy](./summary-map.webp)
+<a href="./summary-map.webp"><img src="https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/summary-map.webp" alt="Sơ đồ tổng kết các loại lốc xoáy" loading="lazy"></a>
 
 Nguồn: [NOAA NSSL - Tornado Basics](https://www.nssl.noaa.gov/education/svrwx101/tornadoes/), [NOAA NSSL - Tornado Types](https://www.nssl.noaa.gov/education/svrwx101/tornadoes/types/), [NWS - Waterspouts](https://www.weather.gov/mfl/waterspouts), [NWS - Dust Devils](https://www.weather.gov/fgz/DustDevil), [NWS Glossary - Gustnado](https://forecast.weather.gov/glossary.php?word=gustnado), [NWS - Enhanced Fujita Scale](https://www.weather.gov/oun/efscale), [Blue Whirls paper](https://arxiv.org/abs/1605.01315)
