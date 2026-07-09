@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.1.1",
   "project": {
     "name": "child-knowledge-tree",
     "title": "Child Knowledge Tree",
@@ -40,6 +40,7 @@
       "cover.webp",
       "comic-01.webp",
       "comic-02.webp",
+      "comic-03.webp",
       "summary-map.webp"
     ],
     "comic_image_must_include": [
@@ -120,11 +121,16 @@
         "nature/weather/tornado-types/cover.webp",
         "nature/weather/tornado-types/comic-01.webp",
         "nature/weather/tornado-types/comic-02.webp",
+        "nature/weather/tornado-types/comic-03.webp",
         "nature/weather/tornado-types/summary-map.webp"
       ],
       "image_generation_models": [
         "DALL-E 3",
         "DALL-E"
+      ],
+      "image_notes": [
+        "Ảnh được hậu kỳ chữ tiếng Việt rõ để dễ đọc trên GitHub.",
+        "README khái niệm chỉ nhúng ảnh; kiến thức chi tiết nằm trong ảnh theo hướng dẫn README root."
       ],
       "status": "ready",
       "description": "Phân biệt tornado, waterspout/vòi rồng nước, dust devil, gustnado, fire whirl/lốc xoáy lửa và cách áp dụng để xử lý tình huống thực tế.",
