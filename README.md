@@ -2,7 +2,7 @@
 
 **Child Knowledge Tree** là dự án tiếng Việt lưu trữ kiến thức cơ bản, cốt lõi dưới dạng **truyện tranh hài hước lầy lội**.
 
-Mỗi khái niệm là một thư mục riêng, trong đó `README.md` chỉ đóng vai trò **khung treo tranh**: nhúng các ảnh `.webp`. Nội dung chi tiết như định nghĩa, ví dụ đời thường, cách áp dụng, vấn đề giải quyết, so sánh và nguồn tham khảo sẽ nằm trong ảnh hoặc `metadata.json`.
+Mỗi khái niệm là một thư mục riêng. `README.md` của khái niệm chỉ đóng vai trò **khung treo tranh**: nhúng ảnh `.webp` và đặt **citation nguồn tham khảo ngay dưới mỗi ảnh**. Nội dung chi tiết như định nghĩa, ví dụ đời thường, cách áp dụng, vấn đề giải quyết và so sánh nằm trong ảnh truyện tranh.
 
 ## Khái niệm đã có
 
@@ -27,6 +27,13 @@ metadata.json
       comic-01.webp
       comic-02.webp
       comic-03.webp
+      comic-04.webp
+      comic-05.webp
+      comic-06.webp
+      comic-07.webp
+      comic-08.webp
+      comic-09.webp
+      comic-10.webp
       summary-map.webp
 ```
 
@@ -52,7 +59,7 @@ Quy ước path trong metadata: **không có tiền tố `knowledge-tree/`**.
 
 ## README của từng khái niệm
 
-README khái niệm chỉ cần nhúng ảnh, không viết lại kiến thức dài bằng Markdown.
+README khái niệm chỉ nhúng ảnh và citation nguồn tham khảo dưới mỗi ảnh, không viết lại kiến thức dài bằng Markdown.
 
 Mẫu tối giản:
 
@@ -61,31 +68,70 @@ Mẫu tối giản:
 
 ![Bìa truyện tranh](./cover.webp)
 
+Nguồn: [Tên nguồn 1](https://example.com), [Tên nguồn 2](https://example.com)
+
 ![Comic 01](./comic-01.webp)
+
+Nguồn: [Tên nguồn](https://example.com)
 
 ![Comic 02](./comic-02.webp)
 
+Nguồn: [Tên nguồn](https://example.com)
+
 ![Comic 03](./comic-03.webp)
 
+Nguồn: [Tên nguồn](https://example.com)
+
+![Comic 04](./comic-04.webp)
+
+Nguồn: [Tên nguồn](https://example.com)
+
+![Comic 05](./comic-05.webp)
+
+Nguồn: [Tên nguồn](https://example.com)
+
+![Comic 06](./comic-06.webp)
+
+Nguồn: [Tên nguồn](https://example.com)
+
+![Comic 07](./comic-07.webp)
+
+Nguồn: [Tên nguồn](https://example.com)
+
+![Comic 08](./comic-08.webp)
+
+Nguồn: [Tên nguồn](https://example.com)
+
+![Comic 09](./comic-09.webp)
+
+Nguồn: [Tên nguồn](https://example.com)
+
+![Comic 10](./comic-10.webp)
+
+Nguồn: [Tên nguồn](https://example.com)
+
 ![Sơ đồ tổng kết](./summary-map.webp)
+
+Nguồn: [Tổng hợp nguồn trong metadata.json](../../../metadata.json)
 ```
 
 ## Chuẩn ảnh truyện tranh
 
-Mỗi bộ ảnh của một khái niệm nên có:
+Mỗi bộ ảnh của một khái niệm nên có **12 ảnh**:
 
-| File | Vai trò |
-|---|---|
-| `cover.webp` | Bìa khái niệm, tình huống mở đầu, nhân vật vui nhộn. |
-| `comic-01.webp`, `comic-02.webp`, `comic-03.webp` | Giải thích kiến thức, ví dụ đời thường, áp dụng thực tế, lỗi dễ nhầm, so sánh. |
-| `summary-map.webp` | Sơ đồ tổng kết, bảng so sánh, checklist dùng khi nào/tránh khi nào, nguồn ngắn gọn nếu cần. |
+| Nhóm ảnh | File | Vai trò |
+|---|---|---|
+| Mở đầu | `cover.webp` | Bìa khái niệm, tình huống mở đầu, nhân vật vui nhộn. |
+| Nội dung chính | `comic-01.webp` → `comic-10.webp` | Giải thích kiến thức chi tiết, ví dụ đời thường, áp dụng thực tế, lỗi dễ nhầm, so sánh với kiến thức tương tự. |
+| Tổng kết | `summary-map.webp` | Sơ đồ tổng kết, bảng so sánh, checklist dùng khi nào/tránh khi nào, nguồn ngắn gọn nếu cần. |
 
 Yêu cầu nội dung trong ảnh:
 
 - Tiếng Việt dễ hiểu, có thuật ngữ tiếng Anh nếu cần.
 - Phong cách truyện tranh hài hước lầy lội, nhiều nhân vật biểu cảm mạnh.
 - Có ví dụ đời thường, hướng dẫn áp dụng thực tế, vấn đề được giải quyết và so sánh với khái niệm dễ nhầm.
-- Nguồn tham khảo đầy đủ lưu trong `metadata.json`; ảnh có thể ghi nguồn ngắn gọn ở `summary-map.webp`.
+- Mỗi ảnh nên tập trung vào một cụm ý nhỏ để chữ to, dễ đọc.
+- Nguồn tham khảo đầy đủ lưu trong `metadata.json`; trong README vẫn phải có dòng **Nguồn:** ngay dưới từng ảnh.
 
 ## Tạo và tối ưu ảnh
 
@@ -140,16 +186,18 @@ Dung lượng tham khảo từ bộ ảnh `nature/weather/tornado-types`:
 
 1. Chọn path ngắn gọn theo dạng `{linh-vuc}/{linh-vuc-con}/.../{khai-niem}/`.
 2. Chốt nội dung: định nghĩa, ví dụ, áp dụng thực tế, so sánh, nguồn tham khảo.
-3. Tạo ảnh bằng DALL-E 3 hoặc DALL-E theo chuẩn trên.
-4. Nếu chữ tiếng Việt trong ảnh sai, sửa thủ công hoặc tạo lại ảnh.
-5. Xuất ảnh sang `.webp`, đặt cùng thư mục với `README.md`.
-6. Tạo README khái niệm chỉ nhúng ảnh.
-7. Cập nhật `metadata.json` với node, path, ảnh, nguồn và trạng thái.
+3. Chia nội dung thành 12 ảnh: `cover.webp`, `comic-01.webp` đến `comic-10.webp`, `summary-map.webp`.
+4. Tạo ảnh bằng DALL-E 3 hoặc DALL-E theo chuẩn trên.
+5. Nếu chữ tiếng Việt trong ảnh sai, sửa thủ công hoặc tạo lại ảnh.
+6. Xuất ảnh sang `.webp`, đặt cùng thư mục với `README.md`.
+7. Tạo README khái niệm chỉ nhúng ảnh và đặt citation nguồn tham khảo dưới mỗi ảnh.
+8. Cập nhật `metadata.json` với node, path, ảnh, nguồn và trạng thái.
 
 ## Trạng thái hiện tại
 
 - Đã bỏ cấp thư mục `knowledge-tree/`.
-- README khái niệm chỉ nhúng ảnh truyện tranh `.webp`.
+- README khái niệm chỉ nhúng ảnh truyện tranh `.webp` và citation nguồn dưới từng ảnh.
+- Mỗi khái niệm nên có **12 ảnh**: 1 ảnh mở đầu, 10 ảnh comic nội dung, 1 ảnh tổng kết.
 - Ảnh dọc khuyến nghị **1055×1491 px**, WebP chất lượng **88–92**.
 
 ## Nguyên tắc nội dung
