@@ -1,6 +1,6 @@
 # Các loại lốc xoáy 🌪️
 
-> Ảnh được nhúng qua jsDelivr CDN cache để giảm lỗi GitHub “too many requests”. Bấm vào ảnh để mở bản `.webp` local trong repo nếu cần.
+> Ảnh dùng mô hình **CDN-first, local fallback**: trình duyệt ưu tiên tải ảnh từ jsDelivr CDN cache để giảm lỗi GitHub “too many requests”; nếu CDN lỗi hoặc cache chưa cập nhật, bấm vào ảnh để mở bản `.webp` local trong repo.
 
 <a href="./cover.webp"><img src="https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/cover.webp" alt="Bìa truyện tranh về các loại lốc xoáy" loading="lazy"></a>
 
