@@ -108,23 +108,63 @@ Quy trình khuyến nghị:
 2. **Tạo ảnh bằng DALL-E 3 hoặc DALL-E**
    - Phong cách: truyện tranh tiếng Việt, hài hước lầy lội, giáo dục, dễ hiểu.
    - Bố cục: nhiều panel rõ ràng, chữ lớn, ít chữ mỗi ô, nhân vật biểu cảm mạnh.
+   - Nên dùng nhiều nhân vật xuyên suốt trong câu chuyện để ảnh vui hơn, dễ nhớ hơn.
    - Nội dung bắt buộc: định nghĩa, ví dụ, ứng dụng thực tế, lỗi dễ nhầm, so sánh.
    - Kết quả cần rõ nét, dễ đọc trên GitHub.
+   - Kích thước khuyến nghị cho ảnh dọc: **1055×1491 px** hoặc tỷ lệ gần **1000:1414**.
 
 3. **Prompt mẫu ngắn**
 
 ```text
 Tạo ảnh truyện tranh tiếng Việt về khái niệm: {TEN_KHAI_NIEM}.
 Phong cách hài hước lầy lội, giáo dục, dễ hiểu.
-Bố cục 4-6 panel, chữ lớn, ít chữ mỗi panel.
+Bố cục 4-6 panel, chữ lớn, ít chữ mỗi panel, nhiều nhân vật biểu cảm mạnh.
 Nội dung gồm: định nghĩa ngắn, ví dụ đời thường, cách áp dụng thực tế, vấn đề được giải quyết, so sánh với khái niệm dễ nhầm.
-Ảnh rõ nét, phù hợp lưu thành .webp.
+Ảnh dọc kích thước khoảng 1055×1491 px hoặc tỷ lệ 1000:1414, rõ nét, phù hợp lưu thành .webp.
 ```
 
 4. **Hậu kỳ**
    - Nếu chữ tiếng Việt trong ảnh bị sai, cần sửa thủ công hoặc tạo lại ảnh.
    - Có thể tạo hình nền/nhân vật bằng DALL-E 3 hoặc DALL-E, rồi thêm chữ sau để đảm bảo đúng chính tả.
    - Xuất ảnh sang `.webp`, đặt cùng thư mục với `README.md` của khái niệm.
+
+## Quy ước tối ưu ảnh WebP
+
+Mục tiêu là **giảm dung lượng nhưng vẫn giữ chữ dễ đọc, hình ảnh rõ, màu nét**.
+
+Thiết lập khuyến nghị:
+
+- Kích thước ảnh: giữ nguyên khoảng **1055×1491 px** cho ảnh dọc truyện tranh.
+- Định dạng xuất: `.webp`.
+- Chất lượng WebP: khoảng **88–92**.
+- Nén WebP: ưu tiên chế độ nén tốt, ví dụ `method=6` nếu dùng Pillow/Python.
+- Không nên giảm chiều rộng quá thấp nếu ảnh có nhiều chữ; chữ trong panel sẽ dễ mờ hoặc vỡ.
+- Dung lượng mục tiêu tham khảo: khoảng **450–700 KB/ảnh** cho ảnh nhiều panel, nhiều chữ, màu sắc rõ.
+
+Ví dụ tối ưu bằng Python/Pillow:
+
+```python
+from PIL import Image
+from pathlib import Path
+
+src = Path("comic-01.png")
+dst = Path("comic-01.webp")
+
+im = Image.open(src).convert("RGB")
+im.save(dst, "WEBP", quality=90, method=6)
+```
+
+Ví dụ dung lượng tốt từ bộ ảnh `nature/weather/tornado-types`:
+
+| File | Kích thước | Dung lượng WebP tham khảo |
+|---|---:|---:|
+| `cover.webp` | 1055×1491 px | ~463 KB |
+| `comic-01.webp` | 1055×1491 px | ~593 KB |
+| `comic-02.webp` | 1055×1491 px | ~573 KB |
+| `comic-03.webp` | 1055×1491 px | ~681 KB |
+| `summary-map.webp` | 1055×1491 px | ~541 KB |
+
+> Ưu tiên đọc được chữ trước, nhẹ file sau. Ảnh nhẹ mà chữ mờ thì não lại phải bật chế độ “giải mã cổ tự”, mất vui.
 
 ## Quy ước ảnh `.webp`
 
@@ -166,6 +206,7 @@ Metadata dùng để:
 - Quy ước mới: bỏ cấp thư mục `knowledge-tree/`; đường dẫn khái niệm bắt đầu trực tiếp từ `{linh-vuc}/...`.
 - Quy ước mới: README khái niệm chỉ cần nhúng ảnh truyện tranh `.webp`; nội dung chi tiết nằm trong ảnh.
 - Ảnh truyện tranh có thể tạo bằng DALL-E 3 hoặc DALL-E, sau đó lưu `.webp` cùng thư mục với README khái niệm.
+- Quy ước mới: ảnh dọc nên giữ khoảng **1055×1491 px**, xuất WebP chất lượng **88–92** để cân bằng dung lượng, chữ dễ đọc và màu sắc rõ.
 
 ## Nguyên tắc nội dung
 
