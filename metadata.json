@@ -1,10 +1,11 @@
 {
-  "schema_version": "1.3.0",
+  "schema_version": "1.4.0",
   "project": {
     "name": "child-knowledge-tree",
     "title": "Child Knowledge Tree",
     "language": "vi",
     "repository": "PhanAnh1001/child-knowledge-tree",
+    "default_branch": "master",
     "description": "Dự án sử dụng tiếng Việt, chứa kiến thức cơ bản cốt lõi về các khái niệm dưới dạng truyện tranh hài hước lầy lội.",
     "content_style": [
       "truyen-tranh",
@@ -33,9 +34,18 @@
     "image_size_recommended": "1055x1491",
     "image_quality_policy": "WebP quality 88-92, ưu tiên chữ dễ đọc và màu nét hơn giảm dung lượng cực đoan.",
     "image_location": "Ảnh .webp phải nằm cùng thư mục với README.md của khái niệm.",
-    "image_delivery_policy": "Với README public có nhiều ảnh, ưu tiên nhúng ảnh bằng jsDelivr CDN cache theo mẫu https://cdn.jsdelivr.net/gh/{owner}/{repo}@{branch}/{path}; bọc ảnh bằng link local href=./file.webp để có fallback; tránh raw.githubusercontent.com và private-user-images.githubusercontent.com khi có thể để giảm lỗi too many requests.",
+    "image_delivery_policy": "CDN-first, local fallback. README khái niệm ưu tiên load ảnh từ jsDelivr CDN bằng img src; link local trong repo dùng làm fallback bằng a href=./file.webp. Ảnh không upload trực tiếp lên CDN; tạo ảnh local, commit lên GitHub, rồi tạo URL CDN theo mẫu https://cdn.jsdelivr.net/gh/{owner}/{repo}@{branch}/{path-to-image}.",
     "image_link_template": "<a href=\"./{file}\"><img src=\"https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/{path}/{file}\" alt=\"{alt}\" loading=\"lazy\"></a>",
-    "path_source_of_truth": "Tất cả dữ liệu đường dẫn, quan hệ cha-con-cùng cấp, ảnh minh hoạ và nguồn tham khảo được lưu trong metadata.json ở root.",
+    "cdn_generation_workflow": [
+      "Tạo ảnh bằng DALL-E 3 hoặc DALL-E.",
+      "Xuất ảnh sang WebP 1055x1491, quality 88-92.",
+      "Đặt ảnh cùng thư mục README.md của khái niệm.",
+      "Commit ảnh .webp lên GitHub trên branch master.",
+      "Tạo link CDN theo công thức https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/{path-to-image}.",
+      "Trong README, dùng img src là link CDN và a href là link local fallback.",
+      "Nếu thay ảnh mà CDN chưa cập nhật, đổi tên file version hoặc purge cache jsDelivr."
+    ],
+    "path_source_of_truth": "Tất cả dữ liệu đường dẫn, quan hệ cha-con-cùng cấp, ảnh minh hoạ, cấu hình CDN/local fallback và nguồn tham khảo được lưu trong metadata.json ở root.",
     "navigation_required": false,
     "citations_required": true,
     "citation_position": "Dòng citation nguồn tham khảo phải nằm ngay dưới mỗi ảnh trong README khái niệm."
@@ -161,12 +171,14 @@
         "notes": "Ưu tiên chữ tiếng Việt dễ đọc, màu rõ nét, nhiều nhân vật trong câu chuyện."
       },
       "image_delivery": {
-        "mode": "cdn-cache-with-local-fallback",
+        "mode": "cdn-first-local-fallback",
         "cdn": "jsDelivr",
         "branch": "master",
         "cdn_base_url": "https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/",
-        "fallback": "Ảnh trong README được bọc bằng href trỏ tới file .webp local cùng thư mục.",
-        "reason": "Giảm lỗi GitHub too many requests khi README tải nhiều ảnh WebP cùng lúc."
+        "load_priority": "img src tải từ CDN trước",
+        "fallback": "a href trỏ tới file .webp local cùng thư mục để người đọc bấm mở khi CDN lỗi hoặc cache chưa cập nhật.",
+        "reason": "Giảm lỗi GitHub too many requests khi README tải nhiều ảnh WebP cùng lúc.",
+        "example": "<a href=\"./cover.webp\"><img src=\"https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/cover.webp\" alt=\"Bìa truyện tranh\" loading=\"lazy\"></a>"
       },
       "image_plan": [
         {
@@ -253,7 +265,7 @@
         "https://forecast.weather.gov/glossary.php?word=vortex",
         "https://arxiv.org/abs/1605.01315"
       ],
-      "source_notes": "README khái niệm đã đặt citation dưới từng ảnh và chuyển link ảnh sang jsDelivr CDN cache, có fallback local khi bấm vào ảnh."
+      "source_notes": "README khái niệm đã đặt citation dưới từng ảnh và dùng CDN-first bằng jsDelivr, local fallback bằng link tới file .webp cùng thư mục."
     }
   ]
 }
