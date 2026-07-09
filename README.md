@@ -8,7 +8,7 @@ Mỗi khái niệm là một thư mục riêng. `README.md` của khái niệm c
 
 | Lĩnh vực | Nhánh | Khái niệm | Trạng thái |
 |---|---|---|---|
-| Tự nhiên | Thời tiết | [Các loại lốc xoáy](./nature/weather/tornado-types/README.md) | `needs-images` |
+| Tự nhiên | Thời tiết | [Các loại lốc xoáy](./nature/weather/tornado-types/README.md) | `ready` |
 
 ## Cấu trúc thư mục
 
@@ -61,7 +61,28 @@ Quy ước path trong metadata: **không có tiền tố `knowledge-tree/`**.
 
 README khái niệm chỉ nhúng ảnh và citation nguồn tham khảo dưới mỗi ảnh, không viết lại kiến thức dài bằng Markdown.
 
-Mẫu tối giản:
+### Quy ước link ảnh để tránh lỗi GitHub “too many requests”
+
+Với bộ ảnh nhiều file `.webp`, ưu tiên nhúng ảnh qua **jsDelivr CDN cache** thay vì gọi trực tiếp `raw.githubusercontent.com` hoặc link upload tạm của GitHub. Ảnh vẫn phải được lưu local trong cùng thư mục khái niệm.
+
+Mẫu khuyến nghị:
+
+```md
+<a href="./comic-01.webp">
+  <img src="https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/comic-01.webp" alt="Comic 01" loading="lazy">
+</a>
+
+Nguồn: [Tên nguồn](https://example.com)
+```
+
+Ý nghĩa:
+
+- `src` dùng CDN cache để giảm lỗi tải ảnh/rate limit khi xem README.
+- `href` trỏ về ảnh local trong repo để người đọc vẫn mở được bản gốc nếu cần.
+- `loading="lazy"` giúp trình duyệt tải ảnh dần, không dồn 12 ảnh cùng lúc.
+- Khi thay ảnh nhưng giữ nguyên tên file, nếu CDN chưa cập nhật ngay thì đổi tên file theo version hoặc purge cache CDN.
+
+Mẫu tối giản nếu chỉ xem nội bộ repo:
 
 ```md
 # Tên khái niệm
@@ -191,7 +212,8 @@ Dung lượng tham khảo từ bộ ảnh `nature/weather/tornado-types`:
 5. Nếu chữ tiếng Việt trong ảnh sai, sửa thủ công hoặc tạo lại ảnh.
 6. Xuất ảnh sang `.webp`, đặt cùng thư mục với `README.md`.
 7. Tạo README khái niệm chỉ nhúng ảnh và đặt citation nguồn tham khảo dưới mỗi ảnh.
-8. Cập nhật `metadata.json` với node, path, ảnh, nguồn và trạng thái.
+8. Với README public có nhiều ảnh, nhúng ảnh bằng CDN cache `https://cdn.jsdelivr.net/gh/{owner}/{repo}@{branch}/{path}` và bọc bằng link local `href="./file.webp"`.
+9. Cập nhật `metadata.json` với node, path, ảnh, nguồn, trạng thái và quy ước delivery nếu có.
 
 ## Trạng thái hiện tại
 
@@ -199,6 +221,7 @@ Dung lượng tham khảo từ bộ ảnh `nature/weather/tornado-types`:
 - README khái niệm chỉ nhúng ảnh truyện tranh `.webp` và citation nguồn dưới từng ảnh.
 - Mỗi khái niệm nên có **12 ảnh**: 1 ảnh mở đầu, 10 ảnh comic nội dung, 1 ảnh tổng kết.
 - Ảnh dọc khuyến nghị **1055×1491 px**, WebP chất lượng **88–92**.
+- Với các bộ ảnh dễ gặp lỗi GitHub “too many requests”, dùng CDN cache jsDelivr + link fallback local.
 
 ## Nguyên tắc nội dung
 
