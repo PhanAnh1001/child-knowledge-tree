@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.4.0",
+  "schema_version": "1.5.0",
   "project": {
     "name": "child-knowledge-tree",
     "title": "Child Knowledge Tree",
@@ -34,18 +34,19 @@
     "image_size_recommended": "1055x1491",
     "image_quality_policy": "WebP quality 88-92, ưu tiên chữ dễ đọc và màu nét hơn giảm dung lượng cực đoan.",
     "image_location": "Ảnh .webp phải nằm cùng thư mục với README.md của khái niệm.",
-    "image_delivery_policy": "CDN-first, local fallback. README khái niệm ưu tiên load ảnh từ jsDelivr CDN bằng img src; link local trong repo dùng làm fallback bằng a href=./file.webp. Ảnh không upload trực tiếp lên CDN; tạo ảnh local, commit lên GitHub, rồi tạo URL CDN theo mẫu https://cdn.jsdelivr.net/gh/{owner}/{repo}@{branch}/{path-to-image}.",
-    "image_link_template": "<a href=\"./{file}\"><img src=\"https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/{path}/{file}\" alt=\"{alt}\" loading=\"lazy\"></a>",
+    "image_delivery_policy": "CDN-first, local fallback. README khái niệm ưu tiên load ảnh từ jsDelivr CDN bằng img src; link local trong repo dùng làm fallback bằng a href=./file.webp. Ảnh không upload trực tiếp lên CDN; tạo ảnh local, commit lên GitHub, rồi tạo URL CDN theo mẫu https://cdn.jsdelivr.net/gh/{owner}/{repo}@{branch}/{path-to-image}. Có thể chuẩn hóa cache bằng hậu tố query ?v=1, ?v=2 hoặc đổi tên file version như comic-01-v2.webp khi thay nội dung ảnh.",
+    "image_link_template": "<a href=\"./{file}\"><img src=\"https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/{path}/{file}?v={cache_version_number}\" alt=\"{alt}\" loading=\"lazy\"></a>",
     "cdn_generation_workflow": [
       "Tạo ảnh bằng DALL-E 3 hoặc DALL-E.",
       "Xuất ảnh sang WebP 1055x1491, quality 88-92.",
       "Đặt ảnh cùng thư mục README.md của khái niệm.",
       "Commit ảnh .webp lên GitHub trên branch master.",
-      "Tạo link CDN theo công thức https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/{path-to-image}.",
-      "Trong README, dùng img src là link CDN và a href là link local fallback.",
-      "Nếu thay ảnh mà CDN chưa cập nhật, đổi tên file version hoặc purge cache jsDelivr."
+      "Tạo link CDN theo công thức https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/{path-to-image}?v=1.",
+      "Trong README, dùng img src là link CDN có cache version và a href là link local fallback.",
+      "Nếu chỉ thay nội dung ảnh nhưng giữ tên file, tăng cache version từ ?v=1 lên ?v=2.",
+      "Nếu thay lớn hoặc muốn version bằng tên file, đổi tên file như comic-01-v2.webp và cập nhật README + metadata."
     ],
-    "path_source_of_truth": "Tất cả dữ liệu đường dẫn, quan hệ cha-con-cùng cấp, ảnh minh hoạ, cấu hình CDN/local fallback và nguồn tham khảo được lưu trong metadata.json ở root.",
+    "path_source_of_truth": "Tất cả dữ liệu đường dẫn, quan hệ cha-con-cùng cấp, ảnh minh hoạ, cấu hình CDN/local fallback, cache version và nguồn tham khảo được lưu trong metadata.json ở root.",
     "navigation_required": false,
     "citations_required": true,
     "citation_position": "Dòng citation nguồn tham khảo phải nằm ngay dưới mỗi ảnh trong README khái niệm."
@@ -174,12 +175,31 @@
         "mode": "cdn-first-local-fallback",
         "cdn": "jsDelivr",
         "branch": "master",
+        "cache_version": "v1",
+        "cache_version_number": 1,
+        "cache_busting_strategy": "query-param",
         "cdn_base_url": "https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/",
-        "load_priority": "img src tải từ CDN trước",
+        "cdn_query_suffix": "?v=1",
+        "load_priority": "img src tải từ CDN trước, có hậu tố ?v=1 để chuẩn hóa cache version.",
         "fallback": "a href trỏ tới file .webp local cùng thư mục để người đọc bấm mở khi CDN lỗi hoặc cache chưa cập nhật.",
-        "reason": "Giảm lỗi GitHub too many requests khi README tải nhiều ảnh WebP cùng lúc.",
-        "example": "<a href=\"./cover.webp\"><img src=\"https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/cover.webp\" alt=\"Bìa truyện tranh\" loading=\"lazy\"></a>"
+        "next_update_rule": "Khi thay nội dung ảnh, tăng CDN query lên ?v=2 hoặc đổi tên file sang dạng *-v2.webp nếu muốn version hóa bằng tên file.",
+        "reason": "Giảm lỗi GitHub too many requests và giúp cập nhật cache CDN rõ ràng theo version.",
+        "example": "<a href=\"./cover.webp\"><img src=\"https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/cover.webp?v=1\" alt=\"Bìa truyện tranh\" loading=\"lazy\"></a>"
       },
+      "cdn_images": [
+        "https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/cover.webp?v=1",
+        "https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/comic-01.webp?v=1",
+        "https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/comic-02.webp?v=1",
+        "https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/comic-03.webp?v=1",
+        "https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/comic-04.webp?v=1",
+        "https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/comic-05.webp?v=1",
+        "https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/comic-06.webp?v=1",
+        "https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/comic-07.webp?v=1",
+        "https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/comic-08.webp?v=1",
+        "https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/comic-09.webp?v=1",
+        "https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/comic-10.webp?v=1",
+        "https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/summary-map.webp?v=1"
+      ],
       "image_plan": [
         {
           "file": "cover.webp",
@@ -265,7 +285,7 @@
         "https://forecast.weather.gov/glossary.php?word=vortex",
         "https://arxiv.org/abs/1605.01315"
       ],
-      "source_notes": "README khái niệm đã đặt citation dưới từng ảnh và dùng CDN-first bằng jsDelivr, local fallback bằng link tới file .webp cùng thư mục."
+      "source_notes": "README khái niệm đã đặt citation dưới từng ảnh và dùng CDN-first bằng jsDelivr có cache version ?v=1, local fallback bằng link tới file .webp cùng thư mục."
     }
   ]
 }
