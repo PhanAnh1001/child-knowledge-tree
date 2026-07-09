@@ -24,7 +24,7 @@ metadata.json
     README.md
     {khai-niem}/
       README.md
-      cover.webp
+      0-cover.webp
       comic-01.webp
       comic-02.webp
       comic-03.webp
@@ -94,14 +94,14 @@ Ví dụ khái niệm mới có path:
 
 ```text
 ai/llm/rag/README.md
-ai/llm/rag/cover.webp
+ai/llm/rag/0-cover.webp
 ai/llm/rag/comic-01.webp
 ```
 
 Thì link CDN tương ứng là:
 
 ```text
-https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/ai/llm/rag/cover.webp
+https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/ai/llm/rag/0-cover.webp
 https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/ai/llm/rag/comic-01.webp
 ```
 
@@ -119,7 +119,7 @@ https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/{path-to-ima
 
 Checklist cho khái niệm mới:
 
-1. Tạo đủ 12 ảnh `.webp`: `cover.webp`, `comic-01.webp` → `comic-10.webp`, `summary-map.webp`.
+1. Tạo đủ 12 ảnh `.webp`: `0-cover.webp`, `comic-01.webp` → `comic-10.webp`, `summary-map.webp`.
 2. Đặt ảnh cùng thư mục với `README.md` của khái niệm.
 3. Commit ảnh lên GitHub trước để CDN có file nguồn.
 4. Trong README khái niệm, dùng `img src` là link jsDelivr CDN.
@@ -133,7 +133,7 @@ Mẫu tối giản nếu chỉ xem nội bộ repo, không cần CDN:
 ```md
 # Tên khái niệm
 
-![Bìa truyện tranh](./cover.webp)
+![Bìa truyện tranh](./0-cover.webp)
 
 Nguồn: [Tên nguồn 1](https://example.com), [Tên nguồn 2](https://example.com)
 
@@ -148,7 +148,7 @@ Mỗi bộ ảnh của một khái niệm nên có **12 ảnh**:
 
 | Nhóm ảnh | File | Vai trò |
 |---|---|---|
-| Mở đầu | `cover.webp` | Bìa khái niệm, tình huống mở đầu, nhân vật vui nhộn. |
+| Mở đầu | `0-cover.webp` | Bìa khái niệm, tình huống mở đầu, nhân vật vui nhộn. |
 | Nội dung chính | `comic-01.webp` → `comic-10.webp` | Giải thích kiến thức chi tiết, ví dụ đời thường, áp dụng thực tế, lỗi dễ nhầm, so sánh với kiến thức tương tự. |
 | Tổng kết | `summary-map.webp` | Sơ đồ tổng kết, bảng so sánh, checklist dùng khi nào/tránh khi nào, nguồn ngắn gọn nếu cần. |
 
@@ -203,7 +203,7 @@ Dung lượng tham khảo từ bộ ảnh `nature/weather/tornado-types`:
 
 | File | Kích thước | Dung lượng WebP tham khảo |
 |---|---:|---:|
-| `cover.webp` | 1055×1491 px | ~463 KB |
+| `0-cover.webp` | 1055×1491 px | ~463 KB |
 | `comic-01.webp` | 1055×1491 px | ~593 KB |
 | `comic-02.webp` | 1055×1491 px | ~573 KB |
 | `comic-03.webp` | 1055×1491 px | ~681 KB |
@@ -213,7 +213,7 @@ Dung lượng tham khảo từ bộ ảnh `nature/weather/tornado-types`:
 
 1. Chọn path ngắn gọn theo dạng `{linh-vuc}/{linh-vuc-con}/.../{khai-niem}/`.
 2. Chốt nội dung: định nghĩa, ví dụ, áp dụng thực tế, so sánh, nguồn tham khảo.
-3. Chia nội dung thành 12 ảnh: `cover.webp`, `comic-01.webp` đến `comic-10.webp`, `summary-map.webp`.
+3. Chia nội dung thành 12 ảnh: `0-cover.webp`, `comic-01.webp` đến `comic-10.webp`, `summary-map.webp`.
 4. Tạo ảnh bằng DALL-E 3 hoặc DALL-E theo chuẩn trên.
 5. Nếu chữ tiếng Việt trong ảnh sai, sửa thủ công hoặc tạo lại ảnh.
 6. Xuất ảnh sang `.webp`, đặt cùng thư mục với `README.md`.

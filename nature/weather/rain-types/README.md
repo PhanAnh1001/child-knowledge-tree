@@ -2,7 +2,7 @@
 
 > Ảnh dùng mô hình **CDN-first, local fallback, cache version v1**: trình duyệt ưu tiên tải ảnh từ jsDelivr CDN cache với hậu tố `?v=1`; nếu CDN lỗi hoặc cache chưa cập nhật, bấm vào ảnh để mở bản `.webp` local trong repo. Khi thay ảnh sau này, tăng version lên `?v=2` hoặc đổi tên file thành `*-v2.webp`.
 
-<a href="./cover.webp"><img src="https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/rain-types/cover.webp?v=1" alt="Bìa truyện tranh về mưa và các loại mưa" loading="lazy"></a>
+<a href="./0-cover.webp"><img src="https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/rain-types/0-cover.webp?v=1" alt="Bìa truyện tranh về mưa và các loại mưa" loading="lazy"></a>
 
 Nguồn: [NASA GPM - The Water Cycle](https://gpm.nasa.gov/education/water-cycle), [NOAA NESDIS - What Makes It Rain?](https://www.nesdis.noaa.gov/about/k-12-education/atmosphere/what-makes-it-rain), [Met Office - Rain](https://weather.metoffice.gov.uk/learn-about/weather/types-of-weather/rain)
 

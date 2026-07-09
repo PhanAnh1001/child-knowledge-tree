@@ -2,7 +2,7 @@
 
 > Ảnh dùng mô hình **CDN-first, local fallback, cache version v1**: trình duyệt ưu tiên tải ảnh từ jsDelivr CDN cache với hậu tố `?v=1`; nếu CDN lỗi hoặc cache chưa cập nhật, bấm vào ảnh để mở bản `.webp` local trong repo. Khi thay ảnh sau này, tăng version lên `?v=2` hoặc đổi tên file thành `*-v2.webp`.
 
-<a href="./cover.webp"><img src="https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/cover.webp?v=1" alt="Bìa truyện tranh về các loại lốc xoáy" loading="lazy"></a>
+<a href="./0-cover.webp"><img src="https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/0-cover.webp?v=1" alt="Bìa truyện tranh về các loại lốc xoáy" loading="lazy"></a>
 
 Nguồn: [NOAA NSSL - Tornado Basics](https://www.nssl.noaa.gov/education/svrwx101/tornadoes/), [NOAA NSSL - Tornado Types](https://www.nssl.noaa.gov/education/svrwx101/tornadoes/types/), [NWS - Waterspouts](https://www.weather.gov/mfl/waterspouts), [NWS - Dust Devils](https://www.weather.gov/fgz/DustDevil)
 
