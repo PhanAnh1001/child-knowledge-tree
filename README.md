@@ -9,6 +9,7 @@ Mỗi khái niệm là một thư mục riêng. `README.md` của khái niệm c
 | Lĩnh vực | Nhánh | Khái niệm | Trạng thái |
 |---|---|---|---|
 | Tự nhiên | Thời tiết | [Các loại lốc xoáy](./nature/weather/tornado-types/README.md) | `ready` |
+| Tự nhiên | Thời tiết | [Mưa và các loại mưa](./nature/weather/rain-types/README.md) | `needs-images` |
 
 ## Cấu trúc thư mục
 
