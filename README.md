@@ -9,7 +9,7 @@ Mỗi khái niệm là một thư mục riêng. `README.md` của khái niệm c
 | Lĩnh vực | Nhánh | Khái niệm | Trạng thái |
 |---|---|---|---|
 | Tự nhiên | Thời tiết | [Các loại lốc xoáy](./nature/weather/tornado-types/README.md) | `ready` |
-| Tự nhiên | Thời tiết | [Mưa và các loại mưa](./nature/weather/rain-types/README.md) | `needs-images` |
+| Tự nhiên | Thời tiết | [Mưa và các loại mưa](./nature/weather/rain-types/README.md) | `ready` |
 
 ## Cấu trúc thư mục
 
@@ -54,7 +54,8 @@ File [`metadata.json`](./metadata.json) dùng để lưu:
 - Quan hệ cây: `parent_id`, `children`, `siblings` nếu cần.
 - Danh sách ảnh `.webp` của từng khái niệm.
 - Danh sách nguồn tham khảo `sources`.
-- Cách delivery ảnh: CDN-first, local fallback.
+- Cách delivery ảnh: CDN-first, commit-pinned, local fallback.
+- Commit SHA của bộ ảnh và cache version.
 - Trạng thái node: `draft`, `ready`, `needs-images`, `needs-review`.
 
 Quy ước path trong metadata: **không có tiền tố `knowledge-tree/`**.
@@ -63,15 +64,17 @@ Quy ước path trong metadata: **không có tiền tố `knowledge-tree/`**.
 
 README khái niệm chỉ nhúng ảnh và citation nguồn tham khảo dưới mỗi ảnh, không viết lại kiến thức dài bằng Markdown.
 
-### Quy ước link ảnh: CDN-first, local fallback
+### Quy ước link ảnh: CDN-first, commit-pinned, local fallback
 
 Với bộ ảnh nhiều file `.webp`, README phải **ưu tiên load ảnh từ CDN trước** để giảm lỗi GitHub `too many requests`. Link ảnh local trong repo là **fallback** để người đọc mở bản gốc khi CDN lỗi hoặc cache chưa cập nhật.
+
+URL CDN nên ghim vào **commit SHA chứa đúng bộ ảnh**, không dùng `@master` cho bộ ảnh có thể bị thay nội dung nhưng giữ nguyên tên file. Thêm `?v=N` để URL nguồn thay đổi rõ ràng; GitHub Camo sẽ tạo URL proxy mới thay vì tiếp tục dùng ảnh đã cache theo URL cũ.
 
 Mẫu bắt buộc cho README khái niệm public:
 
 ```md
 <a href="./comic-01.webp">
-  <img src="https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/nature/weather/tornado-types/comic-01.webp" alt="Comic 01" loading="lazy">
+  <img src="https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@{image-commit-sha}/nature/weather/rain-types/comic-01.webp?v=2" alt="Comic 01" loading="lazy">
 </a>
 
 Nguồn: [Tên nguồn](https://example.com)
@@ -79,18 +82,26 @@ Nguồn: [Tên nguồn](https://example.com)
 
 Ý nghĩa:
 
-- `img src="https://cdn.jsdelivr.net/gh/..."` là đường dẫn **CDN-first**, trình duyệt sẽ tải ảnh từ CDN trước.
+- `img src="https://cdn.jsdelivr.net/gh/...@{image-commit-sha}/..."` là đường dẫn **CDN-first và bất biến**, luôn trỏ đúng nội dung ảnh tại commit đó.
+- `?v=2` tạo URL nguồn mới, giúp làm mới GitHub Camo và phân biệt các lần thay bộ ảnh.
 - `a href="./comic-01.webp"` là **local fallback**: nếu CDN lỗi, người đọc bấm vào ảnh để mở file local trong repo.
 - `loading="lazy"` giúp trình duyệt tải ảnh dần, không dồn 12 ảnh cùng lúc.
+- Không chỉnh sửa URL `camo.githubusercontent.com` vì đó là proxy tự sinh của GitHub. Chỉ cần đổi URL trong `img src`, Camo sẽ tự sinh hash mới.
 - Tránh dùng trực tiếp `raw.githubusercontent.com` hoặc `private-user-images.githubusercontent.com` trong README khái niệm vì dễ gặp giới hạn tải ảnh.
 
 > Lưu ý: Trong GitHub README, fallback local là fallback dạng link bấm mở. Fallback tự động bằng JavaScript/onerror không nên dùng vì GitHub có thể chặn hoặc sanitize HTML/JS. Nếu sau này dựng website riêng bằng GitHub Pages/Next.js thì có thể thêm fallback tự động ở tầng web app.
 
 ### Cách tạo ảnh trên CDN cho khái niệm mới
 
-Ảnh không upload trực tiếp lên CDN. Quy trình đúng là: **tạo ảnh local → commit lên GitHub → dùng URL jsDelivr CDN trỏ tới file trong repo**.
+Ảnh không upload trực tiếp lên CDN. Quy trình đúng là: **tạo ảnh local → commit lên GitHub → lấy commit SHA → dùng URL jsDelivr ghim vào SHA đó**.
 
-Ví dụ khái niệm mới có path:
+Ví dụ bộ ảnh được commit tại:
+
+```text
+IMAGE_COMMIT_SHA=4610db156cda5e6aecb1b12814eda65483f34e43
+```
+
+Khái niệm có path:
 
 ```text
 ai/llm/rag/README.md
@@ -101,32 +112,33 @@ ai/llm/rag/comic-01.webp
 Thì link CDN tương ứng là:
 
 ```text
-https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/ai/llm/rag/0-cover.webp
-https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/ai/llm/rag/comic-01.webp
+https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@4610db156cda5e6aecb1b12814eda65483f34e43/ai/llm/rag/0-cover.webp?v=1
+https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@4610db156cda5e6aecb1b12814eda65483f34e43/ai/llm/rag/comic-01.webp?v=1
 ```
 
 Công thức tạo link CDN:
 
 ```text
-https://cdn.jsdelivr.net/gh/{owner}/{repo}@{branch}/{path-to-image}
+https://cdn.jsdelivr.net/gh/{owner}/{repo}@{image-commit-sha}/{path-to-image}?v={cache-version}
 ```
 
 Với repo này:
 
 ```text
-https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@master/{path-to-image}
+https://cdn.jsdelivr.net/gh/PhanAnh1001/child-knowledge-tree@{image-commit-sha}/{path-to-image}?v={cache-version}
 ```
 
 Checklist cho khái niệm mới:
 
 1. Tạo đủ 12 ảnh `.webp`: `0-cover.webp`, `comic-01.webp` → `comic-10.webp`, `summary-map.webp`.
 2. Đặt ảnh cùng thư mục với `README.md` của khái niệm.
-3. Commit ảnh lên GitHub trước để CDN có file nguồn.
-4. Trong README khái niệm, dùng `img src` là link jsDelivr CDN.
+3. Commit ảnh lên GitHub và ghi lại **commit SHA chứa bộ ảnh**.
+4. Trong README khái niệm, dùng `img src` là link jsDelivr ghim vào commit SHA và có `?v=1`.
 5. Bọc mỗi ảnh bằng `a href="./file.webp"` để có local fallback.
 6. Đặt dòng `Nguồn:` ngay dưới mỗi ảnh.
-7. Cập nhật `metadata.json`: danh sách ảnh local, `cdn_base_url`, trạng thái và nguồn tham khảo.
-8. Nếu vừa thay ảnh mà CDN chưa cập nhật, đổi tên file theo version như `comic-01-v2.webp` hoặc purge cache jsDelivr.
+7. Cập nhật `metadata.json`: danh sách ảnh local, `image_commit_sha`, `cdn_base_url`, `cache_version`, trạng thái và nguồn tham khảo.
+8. Khi thay hoặc đảo thứ tự ảnh nhưng giữ nguyên tên file: commit bộ ảnh mới, thay `image_commit_sha` trong README/metadata và tăng `?v=2`, `?v=3`...
+9. Có thể purge cache jsDelivr cho URL alias, nhưng với URL ghim commit thì ưu tiên đổi SHA và cache version để kết quả xác định, không phụ thuộc thời gian hết cache.
 
 Mẫu tối giản nếu chỉ xem nội bộ repo, không cần CDN:
 
@@ -217,10 +229,10 @@ Dung lượng tham khảo từ bộ ảnh `nature/weather/tornado-types`:
 4. Tạo ảnh bằng DALL-E 3 hoặc DALL-E theo chuẩn trên.
 5. Nếu chữ tiếng Việt trong ảnh sai, sửa thủ công hoặc tạo lại ảnh.
 6. Xuất ảnh sang `.webp`, đặt cùng thư mục với `README.md`.
-7. Commit ảnh `.webp` lên GitHub để jsDelivr có nguồn tạo CDN.
-8. Tạo README khái niệm theo mẫu CDN-first: `img src` là link CDN, `a href` là link local fallback.
+7. Commit ảnh `.webp` lên GitHub và lấy commit SHA của bộ ảnh.
+8. Tạo README khái niệm theo mẫu CDN-first: `img src` ghim vào commit SHA và có cache version; `a href` là link local fallback.
 9. Đặt citation nguồn tham khảo ngay dưới mỗi ảnh.
-10. Cập nhật `metadata.json` với node, path, ảnh, nguồn, trạng thái và cấu hình `image_delivery`.
+10. Cập nhật `metadata.json` với node, path, ảnh, nguồn, trạng thái, `image_commit_sha` và cấu hình cache.
 
 ## Trạng thái hiện tại
 
@@ -228,7 +240,7 @@ Dung lượng tham khảo từ bộ ảnh `nature/weather/tornado-types`:
 - README khái niệm chỉ nhúng ảnh truyện tranh `.webp` và citation nguồn dưới từng ảnh.
 - Mỗi khái niệm nên có **12 ảnh**: 1 ảnh mở đầu, 10 ảnh comic nội dung, 1 ảnh tổng kết.
 - Ảnh dọc khuyến nghị **1055×1491 px**, WebP chất lượng **88–92**.
-- Với các bộ ảnh dễ gặp lỗi GitHub `too many requests`, dùng mô hình **CDN-first, local fallback**.
+- Với các bộ ảnh dễ gặp lỗi GitHub `too many requests` hoặc cache sai, dùng mô hình **CDN-first, commit-pinned, versioned URL, local fallback**.
 
 ## Nguyên tắc nội dung
 
